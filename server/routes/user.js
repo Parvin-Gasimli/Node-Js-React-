@@ -1,8 +1,10 @@
 const express=require("express")
 
 const router=express.Router()
-const SignUp =require("../controller/user")
+const {SignUp,SignIn} =require("../controller/user")
 
-router.post("/user",SignUp)
+
+router.post("/signup",SignUp)
+router.post("/signin",SignIn)
 
 module.exports=router
