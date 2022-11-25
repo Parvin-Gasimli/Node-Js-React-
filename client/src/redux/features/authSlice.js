@@ -4,7 +4,7 @@ import * as api from "../api"
 export const login = createAsyncThunk("auth/login", async (formvalue,navigate,toast) => {
 
   try {
-    const response =await api.sign(formvalue)
+    const response =await api.signIn(formvalue)
     toast.success("Login is Successfully")
     navigate("/")
     return response.data

@@ -6,6 +6,8 @@ import {
   MDBInput,
   MDBCardFooter,
   MDBValidation,
+
+  MDBValidationItem ,
   MDBIcon,
   MDBBtn,
   MDBSpinner
@@ -35,6 +37,7 @@ const Login = () => {
   const onInputChange=(e)=>{
     let{name,value}=e.target;
     setFormValue({...formValue,[name]:value})
+  
 
   }
   return (
@@ -51,14 +54,18 @@ const Login = () => {
             <MDBIcon fas icon="user-circle" className="fa-2x"/>
             <h5>Sign In</h5>
             <MDBCardBody>
-                <MDBValidation onSubmit={handleSubmit} nonValidate  className="row g-3"  >
+                <MDBValidation  onSubmit={handleSubmit} nonValidate  className="row g-3"  >
 
-                    <div className="col-md-12">
-                        <MDBInput  required invalid validation="Please Provide yours email" label="Email" type="email" value={email} onChange={onInputChange} />
+                 <MDBValidationItem  feedback='Please choose a email.' invalid>
+                 <div className="col-md-12">
+                        <MDBInput  required invalid validation="Please Provide yours email" label="Email" type="email"  onChange={(e)=>onInputChange(e.target.value)} />
                     </div>
 
-                    <div className="col-md-12">
-                        <MDBInput  required invalid validation="Please Provide yours password" label="Password" type="password" value={password} onChange={onInputChange} />
+                   
+                 </MDBValidationItem>
+                 <MDBValidationItem feedback="Please Provide yours password" invalid>
+                 <div className="col-md-12">
+                        <MDBInput  required  label="Password" type="password"  onChange={(e)=>onInputChange(e.target.value)} />
                     </div>
                     <div className="col-md-12">
                         <MDBBtn style={{width:"100%"}} className="mt-2">
@@ -67,6 +74,7 @@ const Login = () => {
                         </MDBBtn>
                      
                     </div>
+                 </MDBValidationItem>
                 </MDBValidation>
             </MDBCardBody>
             <MDBCardFooter>
